@@ -4,37 +4,44 @@ var app = new Vue({
     
     data: {
 
-        email: '',
+        //email: '',
         emailsArray: [],
 
     },
 
     mounted() {
+        console.log(`this is emailsArray before triggering the function`, this.emailsArray)
 
     },
 
     created() {
-  
+
     },
+
     beforeUpdate() {
-  
+
     },
     
     methods: {
 
         generateEmails(){
-            axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-                .then((response) => {
-                    
-                    console.log(`this is 'response' written by me`, response);
-                    console.log(`this is response.data`, response.data);
-                    console.log(`this is response.data.response`, response.data.response);
-                    console.log(`this is this`, this);
+            
 
+            for( let i=0; i<10; i++){
+                
+                axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+                    .then((response) => {
+                        let email = response.data.response;
+                        this.emailsArray.push(email);
                     
-
                 })
-        }
+            }
+            
+
+            console.log(`this is my generated emails array`, this.emailsArray);
+
+            
+        },
 
     }
 })

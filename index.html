@@ -24,6 +24,11 @@
     <div id="root" class="bg-dark text-white d-flex flex-column justify-content-around align-items-center" style="height: 100vh;">
         <div>
             <button class="btn btn-primary" @click="generateEmails">Generate randomic emails</button>
+            <ol v-if="emailsArray.length == 10">
+                <li v-for="(element, index) in emailsArray">
+                    {{ element }}
+                </li>
+            </ol>
         </div>
     </div>
 
